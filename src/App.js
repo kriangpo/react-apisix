@@ -6,7 +6,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
 
   // You will need to change this URL to your APISIX Gateway URL
-  const API_URL = "https://docker2.devops.esc.yipintsoigroup.com/courses/test/api";
+  const API_URL = "https://docker2.devops.esc.yipintsoigroup.com/test/api";
 
   const handleFetchData = async () => {
     setLoading(true);
