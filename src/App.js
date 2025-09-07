@@ -19,9 +19,12 @@ const App = () => {
       console.log('Final URL:', response.url);
       console.log('Final Status:', response.status);
 
-      if (response.status === 401 || response.status === 403) {
-        // redirect user ไปหน้า login ของ Casdoor
-        window.location.href = "https://docker2.devops.esc.yipintsoigroup.com/test/api";
+      // ตรวจสอบว่ามีการ redirect และ URL เป็นของ Casdoor login หรือไม่
+      if (response.redirected && response.url.includes('/login/oauth/authorize')) {
+        console.log('Redirect to login detected. Session is likely expired.');
+
+        // บังคับให้เบราว์เซอร์ไปที่ URL นั้นเพื่อเริ่มล็อกอินใหม่
+        window.location.href = response.url;
         return;
       }
 
