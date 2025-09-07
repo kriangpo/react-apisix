@@ -21,12 +21,9 @@ const App = () => {
     if (response.type === 'opaqueredirect') {
       
       const redirectUrl = response.headers.get('Location');
+      console.log("redirectUrl " + redirectUrl);
       //window.location.href = redirectUrl;  // ให้ browser ไป Casdoor
       return;
-    }
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
     }
       
       const result = await response.json();
