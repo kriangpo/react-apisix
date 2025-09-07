@@ -8,13 +8,13 @@ const App = () => {
   return (
     <BrowserRouter>
       <nav style={{ padding: '10px', backgroundColor: '#f0f0f0' }}>
-        <Link to="/">หน้าหลัก</Link> | <Link to="/login">ล็อกอิน</Link>
+        <Link to="/react-apisix/">หน้าหลัก</Link> | <Link to="/react-apisix/login">ล็อกอิน</Link>
       </nav>
       <div style={{ padding: '20px' }}>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/callback" element={<CallbackHandler />} />
+          <Route path="/react-apisix" element={<Index />} />
+          <Route path="/react-apisix/login" element={<Login />} />
+          <Route path="/react-apisix/callback" element={<CallbackHandler />} />
         </Routes>
       </div>
     </BrowserRouter>
