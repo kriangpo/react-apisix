@@ -10,10 +10,10 @@ const CallbackHandler = () => {
     userManager.signinRedirectCallback().then(user => {
       // Callback สำเร็จ, Redirect ไปหน้าหลัก
       console.log("User signed in:", user);
-      navigate('/');
+      navigate('/react-apisix/');
     }).catch(error => {
       console.error("Callback failed:", error);
-      navigate('/login');
+      navigate('/react-apisix/login');
     });
   }, []);
 

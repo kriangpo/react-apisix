@@ -15,7 +15,7 @@ const Index = () => {
         fetchProtectedData(loggedInUser.access_token);
       } else {
         // ไม่มีผู้ใช้, Redirect ไปหน้า Login
-        navigate('/login');
+        navigate('/react-apisix/login');
       }
     };
     checkUser();
@@ -32,7 +32,7 @@ const Index = () => {
       if (response.status === 401) {
         // Token หมดอายุ, Logout และ Redirect
         await logout();
-        navigate('/login');
+        navigate('/react-apisix/login');
         return;
       }
       const data = await response.json();
