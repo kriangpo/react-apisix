@@ -17,7 +17,8 @@ const App = () => {
         credentials: 'include',
         redirect: 'manual'   // ไม่ตาม redirect อัตโนมัติ
       });
-
+      console.log("response status= " + response.status)
+      
       if (response.status === 302) {
         const redirectUrl = response.headers.get('Location');
         window.location.href = redirectUrl;  // ให้ browser ไป Casdoor
@@ -25,7 +26,7 @@ const App = () => {
       }
 
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        //throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
       const result = await response.json();
