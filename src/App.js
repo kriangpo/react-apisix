@@ -14,6 +14,7 @@ const App = () => {
     try {
       const response = await fetch(API_URL, {
         method: 'GET',
+        credentials: "include"
 
       });
       console.log('Final URL:', response.url);
