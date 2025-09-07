@@ -16,7 +16,8 @@ const App = () => {
         method: 'GET',
 
       });
-      console.log("response status= " + response.status)
+      console.log('Final URL:', response.url);
+      console.log('Final Status:', response.status);
 
       if (response.status === 401 || response.status === 403) {
         // redirect user ไปหน้า login ของ Casdoor
