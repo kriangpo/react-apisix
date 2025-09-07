@@ -18,11 +18,12 @@ const App = () => {
       // allowing this fetch call to complete successfully.
       const response = await fetch(API_URL, {
         method: 'GET',
-        // 'omit' credentials to ensure the initial redirect works correctly
-        credentials: 'omit'
+        redirect: 'manual'
       });
-      
+      console.log("response type " + response.type);
+      console.log("response Status " + response.status);
     if (response.status === 302) {
+      
       const redirectUrl = response.headers.get('Location');
       window.location.href = redirectUrl;  // ให้ browser ไป Casdoor
       return;
