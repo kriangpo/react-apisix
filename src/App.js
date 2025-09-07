@@ -13,7 +13,7 @@ const App = () => {
     setError(null);
     await fetch(API_URL, {
       method: 'GET',
-      redirect: 'manual' // Set redirect to 'manual' to handle it yourself
+
     })
       .then(response => {
         console.log("response type " + response.type);
@@ -30,7 +30,7 @@ const App = () => {
         }
       })
       .then(data => {
-        const result = data.json();
+        const result = data;
         setData(result);
       })
       .catch(error => {
