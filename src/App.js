@@ -13,8 +13,7 @@ const App = () => {
     setError(null);
     try {
       const response = await fetch(API_URL, {
-        method: 'GET',
-        credentials: "include"
+        method: 'GET'
 
       });
       console.log('Final URL:', response.url);
