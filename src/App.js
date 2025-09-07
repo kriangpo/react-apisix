@@ -11,36 +11,33 @@ const App = () => {
   const handleFetchData = async () => {
     setLoading(true);
     setError(null);
-    await fetch(API_URL, {
-      method: 'GET',
-
-    })
-      .then(response => {
-        console.log("response type " + response.type);
-        console.log("response Status " + response.status);
-        if (response.type === 'opaqueredirect') {
-          const redirectedUrl = response.headers.get('Location');
-          if (redirectedUrl) {
-            console.log("redirectedUrl " + redirectedUrl);
-            //window.location.href = redirectedUrl; // Manually redirect
-          }
-        } else {
-          // Process the final response if no redirect or handled otherwise
-          return response.json();
-        }
-      })
-      .then(data => {
-        const result = data;
-        setData(result);
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
-        setError(error.message);
-      }).finally(() => {
-        console.log('Fetch operation completed finally.');
-        setLoading(false);
+    try {
+      const response = await fetch(API_URL, {
+        method: 'GET',
+        credentials: 'include',
+        redirect: 'manual'   // ไม่ตาม redirect อัตโนมัติ
       });
+
+      if (response.status === 302) {
+        const redirectUrl = response.headers.get('Location');
+        window.location.href = redirectUrl;  // ให้ browser ไป Casdoor
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      setData(result);
+
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   const renderData = () => {
     if (loading) {
