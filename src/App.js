@@ -14,7 +14,8 @@ const App = () => {
   try {
     const response = await fetch(API_URL, {
       method: 'GET',
-      credentials: 'include',
+      // 'omit' credentials to ensure the initial redirect works correctly
+      credentials: 'omit',
       redirect: 'manual'   // ไม่ตาม redirect อัตโนมัติ
     });
 
