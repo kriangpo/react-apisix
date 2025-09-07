@@ -15,13 +15,13 @@ const App = () => {
       const response = await fetch(API_URL, {
         method: 'GET',
         credentials: 'include',
-       
+
       });
       console.log("response status= " + response.status)
-      
-      if (response.status === 302) {
-        const redirectUrl = response.headers.get('Location');
-        window.location.href = redirectUrl;  // ให้ browser ไป Casdoor
+
+      if (response.status === 401 || response.status === 403) {
+        // redirect user ไปหน้า login ของ Casdoor
+        window.location.href = "https://docker2.devops.esc.yipintsoigroup.com/test/api";
         return;
       }
 
