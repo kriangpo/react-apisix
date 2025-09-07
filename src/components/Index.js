@@ -23,7 +23,7 @@ const Index = () => {
 
   const fetchProtectedData = async (token) => {
     try {
-      const response = await fetch('https://docker2.devops.esc.yipintsoigroup.com/api', {
+      const response = await fetch('https://docker2.devops.esc.yipintsoigroup.com/test/api', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
