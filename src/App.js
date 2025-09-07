@@ -12,10 +12,6 @@ const App = () => {
     setLoading(true);
     setError(null);
     try {
-      // The browser will handle the 302 redirect automatically.
-      // After successful login at Casdoor, the browser is redirected back to APISIX,
-      // and the APISIX then redirects to the final destination (/api),
-      // allowing this fetch call to complete successfully.
       const response = await fetch(API_URL, {
         method: 'GET',
         redirect: 'manual'
@@ -25,7 +21,7 @@ const App = () => {
     if (response.type === 'opaqueredirect') {
       
       const redirectUrl = response.headers.get('Location');
-      window.location.href = redirectUrl;  // ให้ browser ไป Casdoor
+      //window.location.href = redirectUrl;  // ให้ browser ไป Casdoor
       return;
     }
 
