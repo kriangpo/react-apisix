@@ -22,7 +22,7 @@ const App = () => {
       });
       console.log("response type " + response.type);
       console.log("response Status " + response.status);
-    if (response.status === 302) {
+    if (response.type === 'opaqueredirect') {
       
       const redirectUrl = response.headers.get('Location');
       window.location.href = redirectUrl;  // ให้ browser ไป Casdoor
