@@ -15,7 +15,7 @@ const App = () => {
       const response = await fetch(API_URL, {
         method: 'GET',
         credentials: 'include',
-        redirect: 'manual'   // ไม่ตาม redirect อัตโนมัติ
+       
       });
       console.log("response status= " + response.status)
       
