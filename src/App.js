@@ -9,16 +9,19 @@ const App = () => {
   const API_URL = "https://docker2.devops.esc.yipintsoigroup.com/test/api";
 
   const handleFetchData = async () => {
-  setLoading(true);
-  setError(null);
-  try {
-    const response = await fetch(API_URL, {
-      method: 'GET',
-      // 'omit' credentials to ensure the initial redirect works correctly
-      credentials: 'omit',
-      redirect: 'manual'   // ไม่ตาม redirect อัตโนมัติ
-    });
-
+    setLoading(true);
+    setError(null);
+    try {
+      // The browser will handle the 302 redirect automatically.
+      // After successful login at Casdoor, the browser is redirected back to APISIX,
+      // and the APISIX then redirects to the final destination (/api),
+      // allowing this fetch call to complete successfully.
+      const response = await fetch(API_URL, {
+        method: 'GET',
+        // 'omit' credentials to ensure the initial redirect works correctly
+        credentials: 'omit'
+      });
+      
     if (response.status === 302) {
       const redirectUrl = response.headers.get('Location');
       window.location.href = redirectUrl;  // ให้ browser ไป Casdoor
@@ -28,17 +31,16 @@ const App = () => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
+      
+      const result = await response.json();
+      setData(result);
 
-    const result = await response.json();
-    setData(result);
-
-  } catch (e) {
-    setError(e.message);
-  } finally {
-    setLoading(false);
-  }
-};
-
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const renderData = () => {
     if (loading) {
