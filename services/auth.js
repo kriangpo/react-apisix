@@ -3,7 +3,7 @@ import { UserManager, WebStorageStateStore } from 'oidc-client-ts';
 const settings = {
   authority: 'https://172.26.8.178',
   client_id: 'cd6973253ed0795d930c',
-  redirect_uri: 'https://nodejs.devops.esc.yipintsoigroup.com/callback',
+  redirect_uri: 'https://nodejs.devops.esc.yipintsoigroup.com/react-apisix/callback',
   scope: 'openid profile', 
   response_type: 'code',
   userStore: new WebStorageStateStore({ store: window.localStorage }),
