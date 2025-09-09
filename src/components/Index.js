@@ -31,7 +31,7 @@ const Index = () => {
 
       if (response.status === 401) {
         // Token หมดอายุ, Logout และ Redirect
-        await logout();
+        //await logout();
         //navigate('/react-apisix/login');
         return;
       }
