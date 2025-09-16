@@ -1,7 +1,7 @@
 import { UserManager, WebStorageStateStore } from 'oidc-client-ts';
 
 const settings = {
-  authority: 'https://172.26.8.178',
+  authority: 'https://docker1.devops.esc.yipintsoigroup.com',
   client_id: 'cd6973253ed0795d930c',
   redirect_uri: 'https://nodejs.devops.esc.yipintsoigroup.com/react-apisix/callback',
   post_logout_redirect_uri: 'https://nodejs.devops.esc.yipintsoigroup.com/react-apisix/',
